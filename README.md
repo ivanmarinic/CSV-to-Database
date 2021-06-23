@@ -18,6 +18,12 @@ Web application where you can import data from .csv file which is shown and you 
 * After you press the save to database button, you'll be redirected where you could see data from the database 
 ![Screenshot_4](https://user-images.githubusercontent.com/52219954/123137731-93fb6680-d454-11eb-8f51-8ea870cf7260.jpg)
 
+# Stack Overview
+
+* .NET Core 5.0
+* Angular version 7
+* SQL Server
+
 # Database Overview
 
 ![Screenshot_5](https://user-images.githubusercontent.com/52219954/123139588-ac6c8080-d456-11eb-9add-efa5e3dd05ba.jpg)
