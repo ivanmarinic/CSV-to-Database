@@ -1,0 +1,69 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<Podaci>
+@using System.Data;
+@using System.Text.RegularExpressions;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @if (Model != null)
+    {
+
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>City</th>
+                    <th>ZipCode</th>
+                    <th>PhoneNumber</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    var regex = @"^(\d{5})$";
+
+                    var match = Regex.Match(item.ZipCode, regex, RegexOptions.IgnoreCase);
+
+                    if (match.Success)
+                    {
+                        <tr>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.City</td>
+                            <td>@item.ZipCode</td>
+                            <td>@item.PhoneNumber</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr style="color: red;">
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.City</td>
+                            <td>@item.ZipCode</td>
+                            <td>@item.PhoneNumber</td>
+                        </tr>
+                    }
+
+                }
+
+            </tbody>
+        </table>
+    }
+<form asp-controller="Home" method="post" enctype="multipart/form-data">
+    <input type="file" name="postedFile" />
+    <input type="submit" value="Učitaj" asp-action="Index" />
+    <input type="submit" value="Spremi u bazu"  asp-action="saveToDb" />
+</form>
+</body>
+</html>
